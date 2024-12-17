@@ -1,0 +1,21 @@
+{% extends "learning_logs/base.html" %}
+
+
+{% block header %}
+    <div class="container-fluid" style="text-align: center; margin: auto; margin-top: 30px;">
+        <h1 style="font-family: cursive; font-weight: bold; font-style: italic; color: antiquewhite; font-size: 2em;">Enter the New topic here:</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid" style=" text-align: center; margin: auto; margin-top: 30px;">
+
+        <form action="{% url 'learning_logs:new_topic' %}" method="post" style="width: 100%;">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input class="btn btn-primary btn-info btn-lg" type="submit" value="Submit" style="margin-top: 15px; font-family: cursive;">
+        </form>
+    </div>
+
+{% endblock content %}

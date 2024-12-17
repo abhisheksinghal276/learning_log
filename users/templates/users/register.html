@@ -1,0 +1,25 @@
+{% extends "learning_logs/base.html" %}
+
+<div class="container-fluid" style="text-align: center;">
+    {% block header %}
+
+        <div class="container-fluid" style="text-align: center; margin-bottom: 30px; margin-top: 130px;">
+            <h1 style="font-family: cursive; color: antiquewhite; font-size: 2.5em; font-weight: bold;">Sign Up for your account</h1>
+        </div>
+        
+    {% endblock %}
+
+    {% block content %}
+        <div class="container-fluid" style="margin:auto; width: fit-content;">
+            <form method="post" action="{% url 'users:register' %}" style=" width: fit-content; font-family: cursive; color: antiquewhite; margin-top: 30px;">
+                {% csrf_token %}
+                {{ form.as_p }}
+                
+                <div style="text-align: center;">
+                    <button class="btn btn-success mx-auto" name="submit" style=" margin: 15px; padding:5px 35px; width: fit-content;">Register</button>
+                </div>
+                <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
+            </form>
+        </div>
+    {% endblock content %}
+</div>

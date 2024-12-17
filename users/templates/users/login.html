@@ -1,0 +1,26 @@
+{% extends "learning_logs/base.html" %}
+
+{% block header %}
+    <div class="container-fluid" style="text-align: center; margin-bottom: 30px; margin-top: 130px;">
+        <h1 style="font-family: cursive; color: antiquewhite; font-size: 2.5em;">Log in to your account</h1>
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+
+    {% if form.errors %}
+    <p style="font-family: cursive; color: antiquewhite;">Your Username and Password didn't match. Please try again!</p>
+    {% endif %}
+
+    <form action="{% url 'users:login' %}" method="post" style="color: antiquewhite; font-family: cursive; text-align: center; margin: 40px auto;">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button class="btn btn-primary" name="submit" style=" width: 100px; font-family: cursive; font-weight: 600; padding: 10px; color: antiquewhite;">Login</button>
+
+        <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
+    </form>
+{% endblock content %}
+
+    

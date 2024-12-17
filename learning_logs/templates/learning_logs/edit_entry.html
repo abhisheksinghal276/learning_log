@@ -1,0 +1,23 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+    <div class="container-fluid" style="text-align: center;">
+        <p style=" font-size:xxx-large; margin-bottom: 10px; font-family: cursive; font-weight: 800; font-style: italic; color: antiquewhite;">
+            <a style="text-decoration: none; color: antiquewhite;" href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+        </p>
+    
+    
+        <div class="container-fluid" style="text-align: center; width: 90%;">
+            <p>
+                <h4 style="font-family: cursive; color: antiquewhite;">Edit Entry:</h4>
+            </p>
+
+            <form action="{% url 'learning_logs:edit_entry' entry.id %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-warning" style="font-family: cursive;" name="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

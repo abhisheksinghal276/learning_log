@@ -1,0 +1,30 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+
+    <div class="container-fluid" style="margin: auto; margin-bottom: 5px;">
+        
+        <div class="container-fluid" style="text-align: center;">
+            <h2 style=" font-size:xx-large; margin-bottom: 10px; font-family: cursive; font-weight: 800; font-style: italic; color: antiquewhite;"> {{ topic }}</h2>
+
+            <a class="btn btn-primary btn-warning" href="{% url 'learning_logs:new_entry' topic.id %}" 
+                style="font-size: large; font-family: cursive; margin-top: 20px; width: 300px;">Add a new entry:
+            </a>
+        </div>
+
+        <ul class="list-group" style="margin-top: 20px; background-color: inherit;">
+            {% for entry in entries %}
+            <li class="list-group-item" style="font-family: cursive; font-weight: 300; background-color: inherit; color: antiquewhite;">
+                <p>{{ entry.date_added|date:"M d, Y H:i" }}</p>
+                <p>{{ entry.text }}</p>
+                <p>
+                    <a class="btn btn-primary" href="{% url 'learning_logs:edit_entry' entry.id %}" style="text-decoration: none; color: antiquewhite; font-family: cursive;">Edit Entry</a>
+                </p>
+            </li>
+            {% empty %}
+            <li class="list-group-item">There are no entries for this topic.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock content %}
