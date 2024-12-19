@@ -25,12 +25,14 @@ def topics(request):
 # View for the individual topic page
 
 # Importing required modules to check requested entries before retriving them
-from django.http import Http404
+# importing below modules for error handling
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect, Http404
 
 @login_required(login_url='users:login')
 def topic(request, topic_id):
     """Show the list of entries for each topic"""
-    topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
 
     # Make sure the topic belongs to the current user
     if topic.owner != request.user:
