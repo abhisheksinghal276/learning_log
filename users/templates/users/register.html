@@ -17,6 +17,7 @@
                 
                 <div style="text-align: center;">
                     <button class="btn btn-success mx-auto" name="submit" style=" margin: 15px; padding:5px 35px; width: fit-content;">Register</button>
+                    <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
                 </div>
                 <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
             </form>
