@@ -10,10 +10,12 @@
 {% block content %}
 
     {% if form.errors %}
-    <p style="font-family: cursive; color: antiquewhite;">Your Username and Password didn't match. Please try again!</p>
+    <div class="container-fluid" style="text-align: center;">
+        <p style="font-family: cursive; color: antiquewhite;">Your Username and Password didn't match. Please try again!</p>
+    </div>
     {% endif %}
 
-    <form action="{% url 'users:login' %}" method="post" style="color: antiquewhite; font-family: cursive; text-align: center; margin: 40px auto;">
+    <form action="{% url 'users:login' %}" method="post" style="color: antiquewhite; font-family: cursive; text-align: center; margin: auto;">
         {% csrf_token %}
         {{ form.as_p }}
 
