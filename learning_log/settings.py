@@ -154,9 +154,9 @@ LOGIN_URL = '/users/login/'
 
 #     DEBUG = False
 
-#     # Static asset configuration
-#     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-#     STATIC_ROOT = 'staticfiles'
-#     STATICFILES_DIRS = (
-#         os.path.join(BASE_DIR, 'static'),
-#     )
+# Static asset configuration
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
