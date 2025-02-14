@@ -29,9 +29,9 @@ def register(request):
             new_user = form.save()
             # Log the user in and then redirect to home page.
             authenticated_user = authenticate(username=new_user.username, password=form.cleaned_data['password1'])
-            login(request, authenticated_user)
-            
-            return HttpResponseRedirect(reverse('learning_logs:index'))
+            if authenticated_user is not None:
+                login(request, authenticated_user)
+                return HttpResponseRedirect(reverse('learning_logs:index'))
     
     context = {'form': form}
     return render(request, 'users/register.html', context)
