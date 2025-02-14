@@ -87,11 +87,16 @@ WSGI_APPLICATION = 'learning_log.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default="sqlite:///" + str(BASE_DIR / "db.sqlite3"), 
-        conn_max_age=600
-    )
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
+
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default="sqlite:///" + str(BASE_DIR / "db.sqlite3"), 
+#         conn_max_age=600
+#     )
+# }
 
 
 # Password validation
@@ -157,24 +162,6 @@ if not DEBUG:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
 
-# # Settings for Heroku
-# import os
 
-# if os.getcwd() == '/app':
-#     import dj_database_url
-
-#     import os
-
-#     DATABASES = {
-#         'default': dj_database_url.config(default='postgres://localhost')
-#     }
-
-#     # Honor the 'X-forwarded-Proto' header for request.is_secure()
-#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-#     # Allow all host headers
-#     ALLOWED_HOSTS = ['learning-log2.herokuapp.com']
-
-#     DEBUG = False
 
 
