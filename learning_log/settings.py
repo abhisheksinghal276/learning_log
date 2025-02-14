@@ -162,6 +162,24 @@ if not DEBUG:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
 
+# # Settings for Heroku
+# import os
 
+# if os.getcwd() == '/app':
+#     import dj_database_url
+
+#     import os
+
+#     DATABASES = {
+#         'default': dj_database_url.config(default='postgres://localhost')
+#     }
+
+#     # Honor the 'X-forwarded-Proto' header for request.is_secure()
+#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+#     # Allow all host headers
+#     ALLOWED_HOSTS = ['learning-log2.herokuapp.com']
+
+#     DEBUG = False
 
 
